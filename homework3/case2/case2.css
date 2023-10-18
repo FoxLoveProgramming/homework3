@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #000 url(bg.jpg);
+  background-attachment: fixed;
+  background-blend-mode: hard-light;
+}
+
+.container {
+  /*设置位置为绝对位置，并设置具体值*/
+  position: absolute;
+  top: 80px;
+  left: 100px;
+  right: 100px;
+  bottom: 80px;
+  /*设置背景元素*/
+  background: url(bg.jpg);
+  background-attachment: fixed;
+  display: flex; /*设置元素属性*/
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /*盒子模型阴影设置*/
+  box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5), 0 0 0 100px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+  text-align: center;
+  font-size: 10em;
+  line-height: 0.7em;
+  color: #333;
+  margin-top: -80px;
+}
+
+.container h2 span {
+  display: block;
+  font-weight: 300;
+  letter-spacing: 6px;
+  font-size: 0.2em;
+}
+
+.countdown {
+  display: flex;
+  margin-top: 50px;
+}
+
+.countdown div {
+  /*设置.countdown类下的div标签*/
+  /*设置位置为相对位置*/
+  position: relative;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center; /*居中对齐*/
+  background: #333;
+  color: #fff; /*颜色设置*/
+  margin: 0 15px; /*外边距设置*/
+  font-size: 3em;
+  font-weight: 500;
+}
+.countdown div:before {
+  /*设置.countdown类下的div标签
+    伪类before before和::after下特有的content，
+    用于在css渲染中向元素逻辑上的头部或尾部添加内容。 */
+  content: "";
+  /*设置位置为绝对位置，并设置具体值*/
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  height: 35px;
+
+  background: #ff0;
+  color: #333;
+  font-size: 0.35em; /*字体大小设置 rem 保证兼容性*/
+  line-height: 35px; /*设置行高*/
+  font-weight: 300;
+}
+
+.container #day:before {
+  content: "Days";
+}
+
+.container #hour:before {
+  content: "Hours";
+}
+
+.container #minute:before {
+  content: "Minutes";
+}
+
+.container #second:before {
+  content: "Seconds";
+}

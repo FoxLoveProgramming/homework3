@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Countdown to NCEE</title>
+    <link rel="stylesheet" href="case2.css">
+</head>
+
+<body>
+    <!--用于显示的容器-->
+    <div class="container">
+        <h2><span>Countdown to NCEE</span> 2024</h2>
+        <div class="countdown">
+            <div id="day"></div>
+            <div id="hour"></div>
+            <div id="minute"></div>
+            <div id="second"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    //初始加载时间
+    window.onload = countDown;
+    //获取系统时间
+    function getEndTime(myYear) {
+        var myEndTime = new Date("" + myYear + "/06/07 00:00:00");
+        return myEndTime;
+    }
+    function countDown() {
+        var mydate = new Date();
+        var year = "2024";
+        var EndTime = getEndTime(year);
+        var NowTime = new Date();
+        if (EndTime.getTime() - NowTime.getTime() < 0) {
+            year = mydate.getFullYear() + 1;
+            EndTime = getEndTime(year);
+        }
+        //算出实际剩余时间
+        var t = EndTime.getTime() - NowTime.getTime();
+        //分别换算时间
+        var d = Math.floor(t / 1000 / 60 / 60 / 24);
+        var h = Math.floor((t / 1000 / 60 / 60) % 24);
+        var m = Math.floor((t / 1000 / 60) % 60);
+        var s = Math.floor((t / 1000) % 60);
+        //修改内部时间
+        document.getElementById("day").innerText = d;
+        document.getElementById("hour").innerText = h;
+        document.getElementById("minute").innerText = m;
+        document.getElementById("second").innerText = s;
+    }
+    setInterval(countDown, 1000); //每间隔一秒调用异常countDown函数刷新时间
+</script>
